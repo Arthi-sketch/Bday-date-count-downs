@@ -1,0 +1,36 @@
+#include <stdio.h>
+int fun(int m,int y)
+{
+if(m==1 || m==3 ||m==5 ||m==7 ||m==8 ||m==10||m==12)
+return 31;
+else if(m==4 ||m==6||m==9 ||m==11)
+return 30;
+else
+{if(y%4==0 && (y%400==0 || y%100!=0))
+return 29;
+else return 28;}
+}
+int main()
+{int d1,m1,y1,d2,m2,y2,s,x=0;
+printf("write ur current date wid \'.\' seperated\n");
+scanf("%d.%d.%d",&d1,&m1,&y1); //current date "ex:29.12.2019"
+printf("write ur bday date wid \'.\' seperated\n");
+scanf("%d.%d.%d",&d2,&m2,&y2); //bday date
+for(y1;y1<=y2;y1++)
+ {for(m1;m1<=12;m1++)
+  {if(m1==m2 && y1==y2)
+    {d2=d2-d1;
+    x+=d2; 
+    break;}
+   else
+    {s=fun(m1,y1)-d1;
+    d1=0;
+    x+=s;}
+  }
+ if(m1>=12) m1=1;
+}
+if(x==1) printf("!!only %d day more,my stress buzzer!!",x);
+else if(x==0) printf("hpy born day my dear");
+else
+printf("**%d days to go**",x);
+return 0;}
